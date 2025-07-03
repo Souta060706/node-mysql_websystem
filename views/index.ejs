@@ -5,11 +5,11 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  <form action="/" method="post">
-    <label>タスクの追加</label>
-    <input required type="text" name="add" placeholder="何をする?"/>
-    <input type="submit" value="追加"/>
-  </form>
+<form action="/" method="POST">
+  <label>タスク追加</label>
+  <input type="text" name="add" />
+  <button type="submit">追加</button>
+</form>
   <ul>
    <% for(let todo of todos){ %>
   <li><span><%= todo.content %></span></li>

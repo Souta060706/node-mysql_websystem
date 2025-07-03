@@ -24,26 +24,24 @@ router.get('/', function (req, res, next) {
       console.error(err);
       res.render('index', {
         title: 'ToDo App',
+        todos: [], // ここを追加
       });
     });
 });
 
 router.post('/', function (req, res, next) {
-  connection.connect((err) => {
-    if (err) {
-      console.log('error connecting: ' + err.stack);
-      return
-    }
-    console.log('success');
-  });
   const todo = req.body.add;
-  connection.query(
-    `insert into tasks (user_id, content) values (1, '${todo}');`,
-    (error, results) => {
-      console.log(error);
+  knex("tasks")
+    .insert({ user_id: 1, content: todo })
+    .then(function () {
       res.redirect('/');
-    }
-  );
+    })
+    .catch(function (err) {
+      console.error(err);
+      res.render('index', {
+        title: 'ToDo App',
+        todos: [], // 空配列を渡す
+      });
+    });
 });
-
 module.exports = router;
