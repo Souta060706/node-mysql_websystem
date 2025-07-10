@@ -1,14 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const mysql = require('mysql');
-
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'todo_app'
-});
 
 router.get('/', function (req, res, next) {
   knex("tasks")
@@ -24,7 +16,6 @@ router.get('/', function (req, res, next) {
       console.error(err);
       res.render('index', {
         title: 'ToDo App',
-        todos: [], // ここを追加
       });
     });
 });
@@ -32,16 +23,19 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
   const todo = req.body.add;
   knex("tasks")
-    .insert({ user_id: 1, content: todo })
+    .insert({user_id: 1, content: todo})
     .then(function () {
-      res.redirect('/');
+      res.redirect('/')
     })
     .catch(function (err) {
       console.error(err);
       res.render('index', {
         title: 'ToDo App',
-        todos: [], // 空配列を渡す
       });
     });
 });
+
+router.use('/signup', require('./signup'));
+router.use('/signin', require('./signin'));
+
 module.exports = router;

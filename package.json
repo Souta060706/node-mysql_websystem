@@ -1,5 +1,5 @@
 {
-  "name": "node-mysql-websystem",
+  "name": "mysql-websystem",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -14,5 +14,19 @@
     "knex": "^3.1.0",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1"
-  }
+  },
+  "description": "Node.js &amp; MySQL",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Souta060706/node-mysql_websystem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Souta060706/node-mysql_websystem/issues"
+  },
+  "homepage": "https://github.com/Souta060706/node-mysql_websystem#readme"
 }
